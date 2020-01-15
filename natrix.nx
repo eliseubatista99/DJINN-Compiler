@@ -1,0 +1,78 @@
+// isto Ã© um compentÃ¡rio
+
+// a linguagem natrix Ã© uma linguagem simples para computaÃ§Ã£o numerica elementar
+// trabalha com inteiros (64 bits) e intervalos de inteiros positivos, tem vetores definidos com base nestes intervalos
+// dispÃµe tambÃ©m de uma estrutura condicional e de uma estrutura ciclÃ­ca
+// finalmente natrix tem funÃ§Ãµes (passagem por valor)
+
+
+// maxint e minint sÃ£o *constantes* que existam por omissÃ£o na linguagem
+
+// a palavra chave type introduz definiÃ§Ãµes de tipos (com respectivo nome)
+// por exdmplo intervalos sÃ£o introduzidos desta forma
+type i = [10 .. 20] ;
+type i_max =[10 .. maxint] ;
+// uma restriÃ§Ã£o: os intervalos sÃ£o sempre sobre *valores* positivos
+
+// podemos introduzir tipos de vectores desta forma
+type arr = array i of i_max ;
+
+// as variÃ¡veis da linguagem natrix sÃ£o variÃ¡veis mutÃ¡veis (Ã  la C) sÃ£o tipadas (explicitamente) e necessariamente inicializadas
+// NÃ£o hÃ¡ possibilidade das variÃ¡veis serem nÃ£o inicializadas
+
+var x : int = 5 ;
+
+var y : i_max = 10 ;
+
+var tab1 : arr filled by 0 ;
+
+var tab2 : array 10 of int filled by 1 ;
+// quando o vector Ã© declarado sem o intervalo dos seus Ã­ndices,
+// o vector tem de ter a informaÃ§Ã£o do seu tamanho, aqui o tamanho Ã© 10
+// o intervalo do Ã­ndice Ã© entÃ£o 0..9
+
+// a atribuiÃ§Ã£o e expressÃµes numÃ©ricas (exemplos ilustrativos)
+// as expressÃµes sÃ£o as mesmas do que a linguagem arith, com o acrÃ©scimo
+// da funÃ§Ã£o size que devolve o tamanho dos intervalos e dos vectores
+
+x := x + size(30..35) + size(tab1) ;
+
+tab[5] := let y = x + 3 in y * 5 ; // potencialmente dÃ¡ erro se o resultado estÃ¡ fora do intervalo i_max
+
+// dispomos em natrix de uma instruÃ§Ã£o print para mostrar valores numÃ©ricos
+
+print( x + 1 ) ;
+
+// natrix dispÃµe de uma instruÃ§Ã£o condicional if clÃ¡ssica
+
+if (x > 7) then {  y := y + 1 ; }
+           else {  y := y + 2 ; }
+
+// as condiÃ§Ãµes seguem o padrÃ£o clÃ¡ssico (=, != , <, <=, >, >=, &, |)
+
+// finalemente natrix fornece ciclos deterministas
+
+foreach i in 1..19 do { x := x + i;   y = i * 2;}
+
+// um programa natrix Ã© uma sequÃªncia de instruÃ§Ãµes como as que foram acima apresentados
+
+
+// um exemplo completo de um programa natrix
+
+type t = 0 .. 1000 ;
+
+type arr : array t of int;
+var a : arr filled by 0;
+
+var n2 : int = 0 ;
+var n1 : int = 1 ;
+
+a[0] := 0 ;
+a[1] := 1 ;
+foreach i in 2 .. 1000 do {a[i] := a[i-1] + a[i-2];}
+
+print(a[1000]);
+
+var tmp : int  = 0 ;
+foreach i in t do {tmp:= n1; n1:= n2 + n1; n2 := tmp;}
+print(n1);
