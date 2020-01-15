@@ -1,0 +1,16 @@
+// Definimos um determinado intervalo
+
+// Este intervalo tem tamanho 10 (30-20).
+
+type x = 20..30;
+
+// Define-se um array de inteiros
+// Terá tamanho x (10).
+
+type arr : array x of int;
+
+// Enchemos o array com um 1's
+
+var a : arr filled by 1;
+
+print(a);

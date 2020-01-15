@@ -1,0 +1,6 @@
+var x: int = 6;
+print(x);
+var y: int = 8;
+var b: int = 0;
+b:= x + y;
+print(b);

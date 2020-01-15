@@ -1,0 +1,23 @@
+print(1);
+print(not False);
+print(not True);
+print(False);
+print(True);
+print(1+2);
+print(2-1);
+print(2*2);
+print(4/2);
+if(1==2) then {print(1);} else {print(2);}
+if(1==1) then {print(True);} else {print(False);}
+foreach i in 1..5 do {print(2);}
+print(True or False);
+print(True and False);
+print(True > False);
+print(True < False);
+print(2!=1);
+var x: int = 6;
+print(x);
+var y: int = 8;
+var b: int = 0;
+b:= x + y;
+print(b);

@@ -1,0 +1,6 @@
+type arr : array t of int;
+
+var x : int = 0;
+
+x:=arr; // x é um inteiro e arr é um array de inteiros, são diferentes tipos
+
